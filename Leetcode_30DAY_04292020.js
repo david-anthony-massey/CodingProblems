@@ -20,10 +20,13 @@ var maxPathSum = function(root) {
     if (root.right === null && root.left === null) {
       return maxPath;
     } else if (root.left === null) {
+      currentPartialPath += root.val;
       return recursiveCheckR(root.right, currentPartialPath);
     } else if (root.right === null) {
+      currentPartialPath += root.val;
       return recursiveCheckL(root.left, currentPartialPath);
     } else {
+      currentPartialPath += root.val;
       let leftPath = recursiveCheckL(root.left, currentPartialPath);
       let rightPath = recursiveCheckR(root.right, currentPartialPath);
 
@@ -55,10 +58,13 @@ var maxPathSum = function(root) {
 
       return root.val;
     } else if (root.left === null) {
+      currentPartialPath += root.val;
       return recursiveCheckR(root.right, currentPartialPath);
     } else if (root.right === null) {
+      currentPartialPath += root.val;
       return recursiveCheckL(root.left, currentPartialPath);
     } else {
+      currentPartialPath += root.val;
       let leftPath = recursiveCheckL(root.left, currentPartialPath);
       let rightPath = recursiveCheckR(root.right, currentPartialPath);
 
@@ -84,10 +90,13 @@ var maxPathSum = function(root) {
 
       return root.val;
     } else if (root.left === null) {
+      currentPartialPath += root.val;
       return recursiveCheckR(root.right, currentPartialPath);
     } else if (root.right === null) {
+      currentPartialPath += root.val;
       return recursiveCheckL(root.left, currentPartialPath);
     } else {
+      currentPartialPath += root.val;
       let leftPath = recursiveCheckL(root.left, currentPartialPath);
       let rightPath = recursiveCheckR(root.right, currentPartialPath);
 
@@ -103,7 +112,7 @@ var maxPathSum = function(root) {
     }
   };
 
-  recursiveCheckLR(root, root.val);
+  recursiveCheckLR(root, 0);
 
   return maxPath;
 };
@@ -120,6 +129,10 @@ var tree = function TreeNode(val, left, right) {
 //   new tree(20, new tree(15), new tree(7))
 // );
 
-var testTree = new tree(1, new tree(2), new tree(3));
+// var testTree = new tree(1, new tree(2), new tree(3));
+
+// var testTree = new tree(1, new tree(2, new tree(3, new tree(4, new tree(5)))));
+
+var testTree = new tree(1, new tree(-2), new tree(3));
 
 console.log(maxPathSum(testTree));
