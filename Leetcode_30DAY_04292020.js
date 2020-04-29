@@ -34,7 +34,7 @@ var recursiveCheckL = function(root, currentPartialPath, maxPath) {
 
 var recursiveCheckR = function(root, currentPartialPath, maxPath) {
    if (root.right === null && root.left === null) {
-     currentPartialPath = Math.max(currentPartialPath + root.val, root.val);   
+     currentPartialPath = Math.max(currentPartialPath, root.val);   
         
     if(maxPath < currentPartialPath) {
         maxPath = currentPartialPath;
@@ -88,3 +88,13 @@ var maxPathSum = function(root) {
   
   
 };
+
+var tree = function TreeNode(val, left, right) {
+    this.val = (val===undefined ? 0 : val)
+    this.left = (left===undefined ? null : left)
+    this.right = (right===undefined ? null : right)
+}
+
+var testTree = new tree(1, new tree(2), new tree(3));
+
+console.log(maxPathSum(testTree));
